@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Click Arena</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginScreen">
+    <h2>Enter your name</h2>
+    <input id="usernameInput" type="text" placeholder="Your name">
+    <button id="joinBtn">Join</button>
+    <p id="nameError"></p>
+</div>
+
+<div id="gameUI">
+    <div id="leaderboard" class="draggable"></div>
+    <div id="floatTextContainer"></div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="confetti.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
