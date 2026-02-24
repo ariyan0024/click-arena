@@ -21,19 +21,32 @@ function showFloatingText() {
     text.className = "floatText";
     text.innerText = LINES[Math.floor(Math.random() * LINES.length)];
 
+    // Random position
     text.style.left = Math.random() * 70 + "%";
     text.style.top = Math.random() * 70 + "%";
 
     floatContainer.appendChild(text);
 
-    setTimeout(() => text.style.opacity = 1, 50);
+    // Fade in
+    setTimeout(() => {
+        text.style.opacity = 1;
+    }, 50);
+
+    // Stay for 20–30 seconds
+    const stayTime = 20000 + Math.random() * 10000;
 
     setTimeout(() => {
+        // Fade out
         text.style.opacity = 0;
-        setTimeout(() => text.remove(), 2000);
-    }, 30000 + 1000);
 
-    setTimeout(showFloatingText, 5000 + Math.random() * 20000);
+        // Remove after fade out
+        setTimeout(() => {
+            text.remove();
+            // After removal, schedule next sentence
+            setTimeout(showFloatingText, 3000 + Math.random() * 5000);
+        }, 2000);
+
+    }, stayTime);
 }
 
 if (username) {
@@ -108,4 +121,5 @@ document.addEventListener("mousemove", (e)=>{
     if (!isDown) return;
     leaderboardBox.style.left = (e.clientX + offset.x) + "px";
     leaderboardBox.style.top = (e.clientY + offset.y) + "px";
+
 });
