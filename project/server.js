@@ -115,7 +115,7 @@ app.get("/admin/resetScores", (req, res) => {
 });
 
 app.get("/admin/resetEverything", (req, res) => {
-    if (req.query.key !== "YOUR_ADMIN_KEY") {
+    if (req.query.key !== "mujalovesdogs") {
         return res.status(403).send("Invalid Key");
     }
 
@@ -128,3 +128,4 @@ app.get("/admin/resetEverything", (req, res) => {
 
 
 server.listen(PORT, () => console.log("Server running on port " + PORT));
+
