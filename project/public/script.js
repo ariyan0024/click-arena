@@ -13,7 +13,8 @@ const LINES = [
     "Made by Binary",
     "Pabs and Aya :love:",
     "Ruki hits juls",
-    "johny is close to god"
+    "johny is close to god",
+    "Muja Muja Muja Muja"
 ];
 
 function showFloatingText() {
@@ -123,3 +124,37 @@ document.addEventListener("mousemove", (e)=>{
     leaderboardBox.style.top = (e.clientY + offset.y) + "px";
 
 });
+
+// ===============================
+// ADMIN PANEL
+// ===============================
+const adminPanel = document.getElementById("adminPanel");
+const adminKey = "binary_superadmin_2026"; // CHANGE THIS
+
+// Show admin panel when pressing A
+document.addEventListener("keydown", (e) => {
+    if (e.key === "A" || e.key === "a") {
+        const input = prompt("Enter admin key:");
+        if (input === adminKey) {
+            adminPanel.style.display = "block";
+        }
+    }
+});
+
+// RESET SCORES
+document.getElementById("resetScoresBtn").onclick = () => {
+    const input = prompt("Enter admin key:");
+    if (input !== adminKey) return alert("Wrong key!");
+
+    fetch(`/admin/resetScores?key=${adminKey}`)
+        .then(() => alert("Scores Reset!"));
+};
+
+// RESET EVERYTHING
+document.getElementById("resetEverythingBtn").onclick = () => {
+    const input = prompt("Enter admin key:");
+    if (input !== adminKey) return alert("Wrong key!");
+
+    fetch(`/admin/resetEverything?key=${adminKey}`)
+        .then(() => alert("All Data Reset!"));
+};
