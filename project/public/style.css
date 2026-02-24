@@ -84,8 +84,30 @@ body {
     color: black;
 }
 
+#adminPanel {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+}
+
+#adminPanel button {
+    width: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+
 @keyframes fadeMove {
     0% { opacity: 1; transform: translateY(0px); }
     100% { opacity: 0; transform: translateY(-40px); }
 
 }
+
