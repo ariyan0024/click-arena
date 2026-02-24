@@ -93,4 +93,38 @@ io.on("connection", (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// ==========================
+// ADMIN ROUTES
+// ==========================
+
+app.get("/admin/resetScores", (req, res) => {
+    if (req.query.key !== "mujalovesdogs") {
+        return res.status(403).send("Invalid Key");
+    }
+
+    for (let name in scores) {
+        scores[name].score = 0;
+        scores[name].milestone = 100;
+    }
+
+    saveScores();
+    io.emit("leaderboard", scores);
+
+    res.send("Scores reset.");
+});
+
+app.get("/admin/resetEverything", (req, res) => {
+    if (req.query.key !== "YOUR_ADMIN_KEY") {
+        return res.status(403).send("Invalid Key");
+    }
+
+    scores = {};
+    saveScores();
+    io.emit("leaderboard", scores);
+
+    res.send("All data reset.");
+});
+
+
 server.listen(PORT, () => console.log("Server running on port " + PORT));
