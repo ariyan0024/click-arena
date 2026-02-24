@@ -75,7 +75,17 @@ body {
     animation: fadeMove 1s forwards;
 }
 
+
+.floatText {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 2s ease;
+    font-size: 20px;
+    color: black;
+}
+
 @keyframes fadeMove {
     0% { opacity: 1; transform: translateY(0px); }
     100% { opacity: 0; transform: translateY(-40px); }
+
 }
