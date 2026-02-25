@@ -8,53 +8,12 @@ const nameError = document.getElementById("nameError");
 const floatContainer = document.getElementById("floatTextContainer");
 const leaderboardBox = document.getElementById("leaderboard");
 
-const LINES = [
-    "TaskOps is the best",
-    "Made by Binary",
-    "Pabs and Aya :love:",
-    "Ruki hits juls",
-    "johny is close to god",
-    "Muja Muja Muja Muja"
-];
-
-function showFloatingText() {
-    const text = document.createElement("div");
-    text.className = "floatText";
-    text.innerText = LINES[Math.floor(Math.random() * LINES.length)];
-
-    // Random position
-    text.style.left = Math.random() * 70 + "%";
-    text.style.top = Math.random() * 70 + "%";
-
-    floatContainer.appendChild(text);
-
-    // Fade in
-    setTimeout(() => {
-        text.style.opacity = 1;
-    }, 50);
-
-    // Stay for 20–30 seconds
-    const stayTime = 20000 + Math.random() * 10000;
-
-    setTimeout(() => {
-        // Fade out
-        text.style.opacity = 0;
-
-        // Remove after fade out
-        setTimeout(() => {
-            text.remove();
-            // After removal, schedule next sentence
-            setTimeout(showFloatingText, 3000 + Math.random() * 5000);
-        }, 2000);
-
-    }, stayTime);
-}
 
 if (username) {
     loginScreen.style.display = "none";
     gameUI.style.display = "block";
     socket.emit("resume", username);
-    showFloatingText();
+    
 }
 
 document.getElementById("joinBtn").onclick = () => {
@@ -72,7 +31,7 @@ document.getElementById("joinBtn").onclick = () => {
         localStorage.setItem("clickerName", name);
         loginScreen.style.display = "none";
         gameUI.style.display = "block";
-        showFloatingText();
+        
     });
 };
 
